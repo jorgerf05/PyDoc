@@ -1,31 +1,21 @@
-#!/bin/python3
-
+import sys
 from docxtpl import DocxTemplate
 
 class Document():
-    
+
     def __init__(self, path_to_tpl) -> None:
-        try:
-            self.template = DocxTemplate(path_to_tpl)
-            print("[!] - Succesfully opened template.")
-        except:
-            print("[!] - Could not open template")
-            
+        self.template = DocxTemplate(path_to_tpl)
+
         if self.template is None:
-            print("[!] - Template is None")
-    
-    def write(self, section: str, content:str):
+            print("[!] - Could not load template")
+            sys.exit()
+
+    def write(self, dict_content: dict):
         '''
         Rellena una seccion del documento con el contenido dado.
         '''
-        
-        context = {
-            f'{section}':f'{content}'
-        }
-        
-        self.template.render(context)
-    
+
+        self.template.render(dict_content)
+
     def build(self):
         self.template.save('out.docx')
-        
-    
