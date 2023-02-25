@@ -16,6 +16,6 @@ PyDoc depends on:
 - openai
 - docx2txt
 
-## Example
+## Example template
 You must have a template with section tags like this:
 ![image](https://user-images.githubusercontent.com/63943396/221334897-9fef4d84-4a21-4312-b1d0-d12338df77d0.png)
