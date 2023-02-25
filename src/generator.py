@@ -14,7 +14,9 @@ class Generator():
 
         for section in sections:
 
+            print(f'[+] Generating section -> {section}')
             # No usar ADA, es basura.
+
             res = openai.Completion.create(
                 model='text-davinci-003',
                 # model = 'text-ada-001',

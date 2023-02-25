@@ -4,10 +4,12 @@ from docxtpl import DocxTemplate
 class Document():
 
     def __init__(self, path_to_tpl) -> None:
+
         self.template = DocxTemplate(path_to_tpl)
+        print(f'[+] Loading template from {path_to_tpl}')
 
         if self.template is None:
-            print("[!] - Could not load template")
+            print("[!] Could not load template!")
             sys.exit()
 
     def write(self, dict_content: dict):
@@ -15,7 +17,15 @@ class Document():
         Rellena una seccion del documento con el contenido dado.
         '''
 
-        self.template.render(dict_content)
+        try:
+            print('[+] Creating document')
+            self.template.render(dict_content)
+        except:
+            print('[!] Failed to render document!')
 
     def build(self):
-        self.template.save('out.docx')
+        try:
+            print('[+] Saving document')
+            self.template.save('out.docx')
+        except:
+            print('[!] Error saving document!')
