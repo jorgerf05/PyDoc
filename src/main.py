@@ -11,10 +11,11 @@ from generator import Generator
 def parseTemplate():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-t', '--template', type=str, help='Path to the docx template')
-    parser.add_argument('-T', '--topic', type=str, help='Topic of interest')
+    parser.add_argument('-t', '--template', type=str, help='Path to the docx template', required=True)
+    parser.add_argument('-T', '--topic', type=str, help='Topic of interest', required=True)
+    parser.add_argument('-o', '--output', type=str, help='Output path' required=True)
     args = parser.parse_args()
-    return args.template, args.topic
+    return args.template, args.topic, args.output
 
 def detection(path_to_template:str):
 
@@ -25,7 +26,7 @@ def detection(path_to_template:str):
 
 def main():
 
-    template, topic  = parseTemplate()
+    template, topic, output = parseTemplate()
 
     #TODO: detectar las secciones de manera automatica.
     lista_secciones = detection(template)
@@ -38,7 +39,7 @@ def main():
 
     doc = Document(template)
     doc.write(dict_secciones)
-    doc.build()  # Guardamos el documento
+    doc.build(output)  # Guardamos el documento
 
 
 if __name__ == "__main__":

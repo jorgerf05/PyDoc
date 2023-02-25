@@ -23,9 +23,12 @@ class Document():
         except:
             print('[!] Failed to render document!')
 
-    def build(self):
+    def build(self, out_path:str):
+        '''
+        Guarda el documento.
+        '''
         try:
             print('[+] Saving document')
-            self.template.save('out.docx')
+            self.template.save(out_path)
         except:
             print('[!] Error saving document!')
