@@ -1,5 +1,7 @@
 #!/bin/python3
-
+"""
+Main module for PyDoc
+"""
 
 import re
 import argparse
@@ -25,24 +27,30 @@ def getargs():
 
 
 def detection(path_to_template: str):
+    """
+    Detects sections from a template to be generated.
+    """
     raw_text = docx2txt.process(path_to_template)
-    secciones = re.findall(r"\{\{(.+?)\}\}", raw_text)
-    return secciones
+    detected_sections = re.findall(r"\{\{(.+?)\}\}", raw_text)
+    return detected_sections
 
 
 def main():
+    """
+    Main method
+    """
     template, topic, output = getargs()
-    lista_secciones = detection(template)
+    detected_sections = detection(template)
 
-    # Inicializamos un diccionario con values None
-    dict_secciones = {section: None for section in lista_secciones}
+    # Initialize a dictionary with key -> None
+    sections = {section: None for section in detected_sections}
 
     gen = Generator()
     # gen.generate_sections_gpt3(dict_secciones, topic)
-    gen.generate_sections_chatgpt(dict_secciones, topic)
+    gen.generate_sections_chatgpt(sections, topic)
 
     doc = Document(template)
-    doc.write(dict_secciones)
+    doc.write(sections)
     doc.build(output)  # Guardamos el documento
 
 
