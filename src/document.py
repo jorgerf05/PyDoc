@@ -1,8 +1,13 @@
+"""
+Contains the Document class.
+"""
 import sys
 from docxtpl import DocxTemplate
 
 
 class Document:
+    """ """
+
     def __init__(self, path_to_tpl) -> None:
         self.template = DocxTemplate(path_to_tpl)
         print(f"[+] Loading template from {path_to_tpl}")
@@ -13,7 +18,7 @@ class Document:
 
     def write(self, dict_content: dict):
         """
-        Rellena una seccion del documento con el contenido dado.
+        Fills each section of a template with a given dictionary.
         """
 
         try:
@@ -24,7 +29,7 @@ class Document:
 
     def build(self, out_path: str):
         """
-        Guarda el documento.
+        Saves the document in the specified path
         """
         try:
             print("[+] Saving document")

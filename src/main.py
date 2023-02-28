@@ -10,7 +10,7 @@ from generator import Generator
 
 def getargs():
     """
-    Returns a list
+    Gets argument from the commmand line
     """
     parser = argparse.ArgumentParser()
     parser.add_argument(
