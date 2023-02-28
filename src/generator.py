@@ -6,10 +6,10 @@ class Generator():
     def __init__(self) -> None:
         openai.api_key = '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'
 
-    def fillDocument(self, sections: dict, topic: str):
+    def fill_document(self, sections: dict, topic: str):
         '''
-        Método que se encarga de rellenar el diccionario sections modificándolo con 
-        el texto generado por GPT-3
+        Método que se encarga de rellenar el diccionario sections modificándolo
+        con el texto generado por GPT-3
         '''
 
         for section in sections:
