@@ -24,8 +24,9 @@ class Document:
         try:
             print("[+] Creating document")
             self.template.render(dict_content)
-        except:
+        except Exception as e:
             print("[!] Failed to render document!")
+            print(e)
 
     def build(self, out_path: str):
         """
@@ -34,5 +35,6 @@ class Document:
         try:
             print("[+] Saving document")
             self.template.save(out_path)
-        except:
+        except Exception as e:
             print("[!] Error saving document!")
+            print(e)

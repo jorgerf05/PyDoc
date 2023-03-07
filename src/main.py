@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python
 """
 Main module for PyDoc
 """
@@ -47,7 +47,7 @@ def main():
 
     gen = Generator()
     # gen.generate_sections_gpt3(dict_secciones, topic)
-    gen.generate_sections_chatgpt(sections, topic)
+    gen.generate_sections_gpt35(sections, topic)
 
     doc = Document(template)
     doc.write(sections)
